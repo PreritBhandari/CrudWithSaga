@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
+import { v1 as uuid } from "uuid";
+
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../actions/actions";
 
 export default function AddTodo() {
+  const dispatch = useDispatch();
   const [value, setValue] = useState();
-  const [todoValue, setTodoValue] = useState("");
-
-  const allTodos = [];
-
-  const addTodo = (event) => {
-    event.preventDefault();
-    allTodos.push({
-      value,
-    });
-    console.log(allTodos);
-  };
 
   const textChange = (event) => {
     setValue(event.target.value);
@@ -32,7 +26,15 @@ export default function AddTodo() {
         />
         &nbsp;&nbsp;&nbsp;
         <Button
-          onClick={addTodo}
+          onClick={() => {
+            dispatch(
+              addTodo({
+                id: uuid(),
+                todo: value,
+              })
+            );
+            setValue("");
+          }}
           variant="contained"
           color="primary"
           size="medium"
