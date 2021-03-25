@@ -1,13 +1,17 @@
 import React from "react";
 import "./App.css";
 import ListTodo from "./components/ListTodo/ListTodo";
-
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import createSagaMiddleware from "redux-saga";
 import AddTodo from "./components/AddTodo/AddTodo";
 import { TodoReducer } from "./reducers/todoreducer";
 
-const store = createStore(TodoReducer);
+const sagaMiddleware = createSagaMiddleware();
+
+// sagaMiddleware.run();
+
+const store = createStore(TodoReducer, applyMiddleware(sagaMiddleware));
 
 const App = () => {
   return (
