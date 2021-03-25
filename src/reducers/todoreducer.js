@@ -1,5 +1,4 @@
 import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from "../actions/actions";
-import update from "react-addons-update";
 
 const initialState = [];
 

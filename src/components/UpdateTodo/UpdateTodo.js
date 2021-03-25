@@ -5,8 +5,7 @@ import UpdateDataModal from "./UpdateDataModal";
 export default function UpdateTodo({ id, todo }) {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const updateTodo = (id, todo) => {
-    console.log(id, todo);
+  const updateTodo = () => {
     setModalOpen(true);
   };
 
@@ -22,11 +21,7 @@ export default function UpdateTodo({ id, todo }) {
         id={id}
         todo={todo}
       />
-      <EditIcon
-        onClick={() => updateTodo(id, todo)}
-        fontSize="small"
-        color="primary"
-      />
+      <EditIcon onClick={updateTodo} fontSize="small" color="primary" />
     </div>
   );
 }

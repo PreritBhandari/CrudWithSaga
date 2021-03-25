@@ -6,12 +6,13 @@ import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import AddTodo from "./components/AddTodo/AddTodo";
 import { TodoReducer } from "./reducers/todoreducer";
+import { watchAddTodo } from "./sagas/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-// sagaMiddleware.run();
-
 const store = createStore(TodoReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(watchAddTodo);
 
 const App = () => {
   return (

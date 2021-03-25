@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import { v1 as uuid } from "uuid";
-
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../actions/actions";
+import { addTodoSaga } from "../../actions/actions";
 
 export default function AddTodo() {
   const dispatch = useDispatch();
@@ -28,7 +27,7 @@ export default function AddTodo() {
         <Button
           onClick={() => {
             dispatch(
-              addTodo({
+              addTodoSaga({
                 id: uuid(),
                 todo: value,
               })

@@ -9,7 +9,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { updateTodo } from "../../actions/actions";
+import { updateTodoSaga } from "../../actions/actions";
 
 export default function UpdateDataModal({ id, todo, isModalOpen, modalClose }) {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ export default function UpdateDataModal({ id, todo, isModalOpen, modalClose }) {
           <Button
             onClick={() =>
               dispatch(
-                updateTodo({
+                updateTodoSaga({
                   todo: value,
                   id: id,
                 })

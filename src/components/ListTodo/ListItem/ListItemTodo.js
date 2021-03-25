@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   ListItem,
   ListItemAvatar,
@@ -8,7 +8,7 @@ import {
 import TodayIcon from "@material-ui/icons/Today";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useDispatch } from "react-redux";
-import { deleteTodo } from "../../../actions/actions";
+import { deleteTodoSaga } from "../../../actions/actions";
 import UpdateTodo from "../../UpdateTodo/UpdateTodo";
 
 export default function ListItemTodo({ todo }) {
@@ -21,7 +21,6 @@ export default function ListItemTodo({ todo }) {
 
   return (
     <div>
-     
       <ListItem
         style={{ justifyContent: "space-between", width: "130%" }}
         key={todo.id}
@@ -47,7 +46,7 @@ export default function ListItemTodo({ todo }) {
             <UpdateTodo id={todo.id} todo={todo.todo} />
 
             <DeleteIcon
-              onClick={() => dispatch(deleteTodo(todo.id))}
+              onClick={() => dispatch(deleteTodoSaga(todo.id))}
               fontSize="small"
               color="secondary"
             />
